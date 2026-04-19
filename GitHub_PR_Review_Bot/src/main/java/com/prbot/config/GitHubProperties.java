@@ -13,4 +13,5 @@ import lombok.Setter;
 public class GitHubProperties {
 	private String webhookSecret;
 	private String apiToken;
+    private String apiUrl;
 }

@@ -22,6 +22,7 @@ app:
   github:
     webhook-secret: giythub-secret
     api-token: your-github-pat-token
+    api-url: https://api.github.com
   openai:
     api-key: api-key
     model: gpt-4
