@@ -14,6 +14,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.HexFormat;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Slf4j
@@ -55,6 +56,13 @@ public class WebhookService {
     }
 	
 	private boolean isDuplicate(String deliveryId) {
-	    return false;
+	    String redisKey = "webhook:" + deliveryId;
+		Boolean exists = redisTemplate.hasKey(redisKey);
+
+		if(Boolean.TRUE.equals(exists)) {
+			return true;
+		}
+		redisTemplate.opsForValue().set(redisKey,"processed", 24, TimeUnit.HOURS);
+		return false;
 	}
 }
