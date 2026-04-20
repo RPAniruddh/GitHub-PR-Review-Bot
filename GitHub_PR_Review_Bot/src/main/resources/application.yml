@@ -3,7 +3,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/prbot_db
+    url: jdbc:postgresql://localhost:5433/prbot_db
+    driver-class-name: org.postgresql.Driver
     username: username
     password: password
   jpa:
@@ -20,7 +21,7 @@ spring:
 
 app:
   github:
-    webhook-secret: giythub-secret
+    webhook-secret: mysecretkey
     api-token: your-github-pat-token
     api-url: https://api.github.com
   openai:

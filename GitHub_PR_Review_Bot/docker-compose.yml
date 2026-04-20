@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: prbot-postgres
+    environment:
+      POSTGRES_DB: prbot_db
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"
+
+  redis:
+    image: redis:7
+    container_name: prbot-redis
+    ports:
+      - "6379:6379"
